@@ -1,42 +1,41 @@
 <template>
   <main class="main">
-    <the-header />
-
     <section class="section">
-      <h1 class="section__title">思う存分、枠内をクリックしてください</h1>
+      <base-heading tag="h1"  class="section__title">
+        思う存分、枠内をクリックしてください
+      </base-heading>
       
       <div class="click-space" @click="onClickArea()">
-        <p class="click-space__message">{{ message }}</p>
+        <div class="click-space__message" v-for="(message, index) in messages" :key="index">
+          <p class="message">{{ message }}</p>
+        </div>
       </div>
     </section>
   </main>
 </template>
 
 <script>
-import TheHeader from '/src/components/organism/Header.vue'
+import BaseHeading from '@/components/atoms/BaseHeading.vue'
 
 export default {
-  name: 'Home',
+  name: 'HomePage',
   components: {
-    TheHeader
-  },
-  props: {
-    msg: String
+    BaseHeading
   },
   data() {
     return {
       clicked: 0,
-      message: ''
+      messages: []
     }
   },
   methods: {
     onClickArea() {
       this.clicked++
-      this.message = this.generateMessage(this.clicked)
+      this.messages = this.generateMessage(this.clicked)
     },
     generateMessage(clickCount) {
-      const message = clickCount % 2 === 0 ? '8' : '3'
-      return message
+      const messages = clickCount % 2 === 0 ? ['3'] : ['8']
+      return messages
     }
   },
 }
@@ -45,7 +44,6 @@ export default {
 <style lang="scss" scoped>
 .main {
   padding: 24px 0;
-  height: 100vh;
   display: flex;
   flex-direction: column;
 }
@@ -60,8 +58,6 @@ export default {
 }
 .click-space {
   display: flex;
-  justify-content: center;
-  align-items: center;
   width: 300px;
   height: 300px;
   border: 1px solid #42b983;
@@ -69,9 +65,15 @@ export default {
   cursor: pointer;
 
   &__message {
-    margin: 0 auto;
-    max-height: 100%;
-    font-size: 200px;
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
   }
+}
+.message {
+  margin: 0 auto;
+  max-width: 100%;
+  max-height: 100%;
+  font-size: 200px;
 }
 </style>

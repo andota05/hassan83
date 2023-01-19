@@ -1,16 +1,19 @@
 <template>
   <div id="app">
-    <Home msg=""/>
+    <the-header />
+    <home-page msg=""/>
   </div>
 </template>
 
 <script>
-import Home from './views/Home.vue'
+import TheHeader from '@/components/organisms/TheHeader.vue'
+import HomePage from './pages/HomePage.vue'
 
 export default {
   name: 'App',
   components: {
-    Home
+    TheHeader,
+    HomePage
   }
 }
 </script>
