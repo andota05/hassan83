@@ -43,7 +43,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.main {
+  padding: 24px 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
 .section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
   &__title {
     font-size: 16px;
   }
@@ -53,7 +63,7 @@ export default {
   justify-content: center;
   align-items: center;
   width: 300px;
-  height: 400px;
+  height: 300px;
   border: 1px solid #42b983;
   margin: 0 auto;
   cursor: pointer;
