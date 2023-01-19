@@ -17,10 +17,8 @@ export default {
 
 <style>
 html {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 100vh;
+  touch-action: manipulation;
+  max-height: 100vh;
 }
 body {
   font-family: Avenir, Helvetica, Arial, sans-serif;
